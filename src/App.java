@@ -4,18 +4,23 @@ import java.util.Random;
 public class App {
     public static void main(String[] args) throws Exception {
         
-        Random r = new Random();
-        Random q = new Random();
-        Random p = new Random();
+        Scanner in = new Scanner(System.in);
 
-        int money = 5;
+        Random r = new Random();
+
+        System.out.println("Syötä rahamäärä: ");
+        String input = in.nextLine();
+        int money = Integer.parseInt(input.trim());
+        
+        System.out.println("Aloitusraha: " + money);
 
         
         while (money > 0) {
             
+            System.out.println( "Rahaa jäljellä: " + money);
             int n1 = r.nextInt(10)+1;
-            int n2 = q.nextInt(10)+1;
-            int n3 = p.nextInt(10)+1;
+            int n2 = r.nextInt(10)+1;
+            int n3 = r.nextInt(10)+1;
 
             System.out.println(n1);
             System.out.println(n2);
@@ -32,13 +37,11 @@ public class App {
                         System.out.println("Voitit 5 euroa");
                      }else if(n1 == 7 || n2 == 7 || n3 == 7) {
                         money += 3;
-                        System.out.println(money);
                         System.out.println("Voitit 3 euroa");
                      }else {
-                        money--;
-                        System.out.println(money);
                         System.out.println("Hävisit");
-                     }             
+                     }  
+                     money--;           
         }
     }
 }
