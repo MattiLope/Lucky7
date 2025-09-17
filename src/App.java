@@ -8,16 +8,12 @@ public class App {
 
         Random r = new Random();
 
-        System.out.println("Syötä rahamäärä: ");
+        System.out.println("Enter sum: ");
         String input = in.nextLine();
         int money = Integer.parseInt(input.trim());
         
-        System.out.println("Aloitusraha: " + money);
-
-        
         while (money > 0) {
             
-            System.out.println( "Rahaa jäljellä: " + money);
             int n1 = r.nextInt(10)+1;
             int n2 = r.nextInt(10)+1;
             int n3 = r.nextInt(10)+1;
@@ -28,20 +24,34 @@ public class App {
             
             if (n1 == 7 && n2 == 7 && n3 == 7) {
                 money += 7;
-                System.out.println("Voitit 7");
+                System.out.println("You won 7 euros");
             }else if(n1 == 7 && n2 == 7 && n3 != 7 ||
                      n1 == 7 && n3 == 7 && n2 != 7 ||
                      n2 == 7 && n3 == 7 && n1 != 7) {
 
                         money += 5;
-                        System.out.println("Voitit 5 euroa");
+                        System.out.println("You won 5 euros");
                      }else if(n1 == 7 || n2 == 7 || n3 == 7) {
                         money += 3;
-                        System.out.println("Voitit 3 euroa");
+                        System.out.println("You won 3 euros");
                      }else {
-                        System.out.println("Hävisit");
+                        System.out.println("You lost");
                      }  
-                     money--;           
+                     money--;  
+                     System.out.println( "Money remaining: " + money);
+                  
+                    if (money <= 0) {
+                        System.out.println("Out of money. Game over.");
+                        break;
+            }
+                    System.out.println("Play again? (Enter = yes, e = no): ");
+                    String again = in.nextLine().toLowerCase();
+
+                    if (again.equals("e")) {
+                        System.out.println("Game ended.");
+                        break;
+            }
         }
-    }
+    } 
+   
 }
